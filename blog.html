@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Erim Kocak</title>
+    <meta name="description" content="Blog van Erim Kocak over webontwikkeling, toegankelijkheid en wat ik leer tijdens mijn opleiding.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a class="skip-link" href="#hoofdinhoud">Direct naar de inhoud</a>
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <p class="site-logo"><a href="index.html">Erim Kocak</a></p>
+
+            <nav class="site-nav" aria-label="Hoofdnavigatie">
+                <ul>
+                    <li><a href="index.html">Whoami</a></li>
+                    <li><a href="projecten.html">Projecten</a></li>
+                    <li><a href="blog.html" aria-current="page">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="hoofdinhoud">
+        <h1>Blog</h1>
+        <p class="pagina-intro">
+            Korte stukken over wat ik tegenkom tijdens het bouwen: keuzes die ik maak, fouten die ik
+            maak en wat ik daarvan leer.
+        </p>
+
+        <section aria-labelledby="posts-titel">
+            <h2 id="posts-titel">Recente posts</h2>
+
+            <ul class="posts">
+                <li>
+                    <article class="post">
+                        <h3>Waarom ik mijn portfolio zonder framework bouw</h3>
+                        <p class="post__meta">
+                            Gepubliceerd op <time datetime="2026-09-05">5 september 2026</time>
+                        </p>
+                        <p>
+                            Het was verleidelijk om meteen een framework te pakken. Toch begin ik met kale
+                            HTML en CSS: ik wil eerst zelf snappen hoe de browser mijn markup leest en
+                            waarom semantische elementen verschil maken voor een screenreader.
+                        </p>
+                        <p><a class="post__link" href="#">Lees verder <span class="sr-only">over bouwen zonder framework</span></a></p>
+                    </article>
+                </li>
+
+                <li>
+                    <article class="post">
+                        <h3>Mobile first: beginnen bij de kleinste schermbreedte</h3>
+                        <p class="post__meta">
+                            Gepubliceerd op <time datetime="2026-09-03">3 september 2026</time>
+                        </p>
+                        <p>
+                            Ik ontwierp eerst voor desktop en probeerde daarna alles kleiner te maken. Dat
+                            werkte niet. Door bij 360 pixels te beginnen en met media queries lagen toe te
+                            voegen, bleef mijn CSS een stuk overzichtelijker.
+                        </p>
+                        <p><a class="post__link" href="#">Lees verder <span class="sr-only">over mobile first werken</span></a></p>
+                    </article>
+                </li>
+
+                <li>
+                    <article class="post">
+                        <h3>Contrast is geen detail</h3>
+                        <p class="post__meta">
+                            Gepubliceerd op <time datetime="2026-08-28">28 augustus 2026</time>
+                        </p>
+                        <p>
+                            Lichtgrijze tekst op wit ziet er rustig uit, maar is voor veel mensen slecht
+                            leesbaar. Sinds ik mijn kleuren toets aan de WCAG AA-norm kies ik bewuster, en
+                            het ontwerp wordt er niet lelijker van.
+                        </p>
+                        <p><a class="post__link" href="#">Lees verder <span class="sr-only">over contrast en WCAG</span></a></p>
+                    </article>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Erim Kocak - portfolio voor het vak WPFW, De Haagse Hogeschool.</p>
+    </footer>
+</body>
+</html>

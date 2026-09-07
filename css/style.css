@@ -1,0 +1,357 @@
+/* ==========================================================================
+   Portfolio Erim Kocak - hoofdstylesheet
+   Opbouw: 1 variabelen  2 reset  3 basis  4 header/nav  5 main  6 componenten
+           7 footer  8 media queries (mobile first: 480px / 768px / 1024px)
+   ========================================================================== */
+
+/* 1. Variabelen ----------------------------------------------------------- */
+:root {
+    --kleur-tekst: #1b1f26;
+    --kleur-tekst-zacht: #4a5260;
+    --kleur-achtergrond: #ffffff;
+    --kleur-vlak: #f2f5f9;
+    --kleur-rand: #d3dae4;
+    --kleur-accent: #0b4f9e;
+    --kleur-accent-donker: #073a76;
+    --kleur-donker: #101724;
+
+    --lettertype: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    --ruimte-xs: 0.5rem;
+    --ruimte-s: 1rem;
+    --ruimte-m: 1.5rem;
+    --ruimte-l: 2.5rem;
+    --ruimte-xl: 4rem;
+
+    --max-breedte: 70rem;
+    --radius: 0.5rem;
+}
+
+/* 2. Reset ---------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1, h2, h3,
+p,
+ul,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 3. Basis ---------------------------------------------------------------- */
+body {
+    font-family: var(--lettertype);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--kleur-tekst);
+    background-color: var(--kleur-achtergrond);
+    /* voorkomt horizontaal scrollen op smalle schermen */
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    line-height: 1.25;
+    /* rustige, leesbare regellengte voor koppen */
+    max-width: 30ch;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: var(--ruimte-m);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--ruimte-s);
+}
+
+h3 {
+    font-size: 1.15rem;
+    margin-bottom: var(--ruimte-xs);
+}
+
+p {
+    max-width: 65ch;
+}
+
+p + p {
+    margin-top: var(--ruimte-s);
+}
+
+a {
+    color: var(--kleur-accent);
+}
+
+a:hover {
+    color: var(--kleur-accent-donker);
+}
+
+/* zichtbare focus voor toetsenbordgebruikers */
+a:focus-visible {
+    outline: 3px solid var(--kleur-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+code {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background-color: var(--kleur-vlak);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+}
+
+/* alleen voorleesbaar, niet zichtbaar */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* springt naar de hoofdinhoud, wordt zichtbaar bij focus */
+.skip-link {
+    position: absolute;
+    top: -3rem;
+    left: var(--ruimte-s);
+    z-index: 10;
+    padding: var(--ruimte-xs) var(--ruimte-s);
+    background-color: var(--kleur-accent);
+    color: #ffffff;
+    border-radius: 0 0 var(--radius) var(--radius);
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+    color: #ffffff;
+}
+
+/* 4. Header en navigatie -------------------------------------------------- */
+.site-header {
+    background-color: var(--kleur-donker);
+    color: #ffffff;
+}
+
+.site-header__inner {
+    max-width: var(--max-breedte);
+    margin: 0 auto;
+    padding: var(--ruimte-s);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ruimte-s);
+}
+
+.site-logo {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.site-logo a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ruimte-xs) var(--ruimte-m);
+}
+
+.site-nav a {
+    display: inline-block;
+    /* ruime aanraakzone op mobiel */
+    padding: var(--ruimte-xs) 0;
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+.site-nav a:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
+
+/* markeert de pagina waar je nu bent */
+.site-nav a[aria-current="page"] {
+    font-weight: 700;
+    border-bottom-color: #ffffff;
+}
+
+/* 5. Main ----------------------------------------------------------------- */
+main {
+    max-width: var(--max-breedte);
+    margin: 0 auto;
+    padding: var(--ruimte-l) var(--ruimte-s);
+}
+
+main section {
+    margin-top: var(--ruimte-l);
+}
+
+.pagina-intro {
+    color: var(--kleur-tekst-zacht);
+    font-size: 1.05rem;
+}
+
+/* 6. Componenten ---------------------------------------------------------- */
+
+/* intro met foto op de whoami-pagina */
+.intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ruimte-m);
+}
+
+.intro__foto {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    background-color: var(--kleur-vlak);
+    border: 1px solid var(--kleur-rand);
+}
+
+/* kaartenraster: gebruikt voor vaardigheden en projecten */
+.kaarten,
+.posts {
+    display: grid;
+    gap: var(--ruimte-m);
+    margin-top: var(--ruimte-m);
+}
+
+.kaart {
+    height: 100%;
+    padding: var(--ruimte-m);
+    background-color: var(--kleur-vlak);
+    border: 1px solid var(--kleur-rand);
+    border-radius: var(--radius);
+}
+
+.kaart__link,
+.post__link {
+    font-weight: 600;
+}
+
+.technieken {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ruimte-xs);
+    margin-top: var(--ruimte-s);
+}
+
+.technieken li {
+    padding: 0.15rem 0.6rem;
+    font-size: 0.875rem;
+    background-color: var(--kleur-achtergrond);
+    border: 1px solid var(--kleur-rand);
+    border-radius: 999px;
+}
+
+.post {
+    padding-bottom: var(--ruimte-m);
+    border-bottom: 1px solid var(--kleur-rand);
+}
+
+.post__meta {
+    color: var(--kleur-tekst-zacht);
+    font-size: 0.9rem;
+    margin-bottom: var(--ruimte-xs);
+}
+
+/* 7. Footer --------------------------------------------------------------- */
+.site-footer {
+    margin-top: var(--ruimte-xl);
+    padding: var(--ruimte-m) var(--ruimte-s);
+    background-color: var(--kleur-vlak);
+    border-top: 1px solid var(--kleur-rand);
+}
+
+.site-footer p {
+    max-width: var(--max-breedte);
+    margin: 0 auto;
+    color: var(--kleur-tekst-zacht);
+    font-size: 0.9rem;
+}
+
+/* 8. Media queries -------------------------------------------------------- */
+
+/* tablet vanaf 768px: header naast elkaar, kaarten in twee kolommen */
+@media (min-width: 48em) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .site-header__inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--ruimte-s) var(--ruimte-m);
+    }
+
+    main {
+        padding: var(--ruimte-xl) var(--ruimte-m);
+    }
+
+    .intro {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: var(--ruimte-l);
+    }
+
+    .intro__foto {
+        flex-shrink: 0;
+    }
+
+    .kaarten {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* desktop vanaf 1024px: drie kolommen en meer witruimte */
+@media (min-width: 64em) {
+    .kaarten {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--ruimte-l);
+    }
+
+    .posts {
+        gap: var(--ruimte-l);
+    }
+}
+
+/* respecteert de systeeminstelling voor minder beweging */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
