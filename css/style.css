@@ -283,6 +283,28 @@ main section {
     margin-bottom: var(--ruimte-xs);
 }
 
+/* demo-video's op de whoami-pagina */
+.demos__lijst {
+    display: grid;
+    gap: var(--ruimte-m);
+    margin-top: var(--ruimte-m);
+}
+
+.demo {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: var(--kleur-donker);
+    border: 1px solid var(--kleur-rand);
+    border-radius: var(--radius);
+}
+
+@media (min-width: 48em) {
+    .demos__lijst {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* 7. Footer --------------------------------------------------------------- */
 .site-footer {
     margin-top: var(--ruimte-xl);
