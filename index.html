@@ -19,84 +19,118 @@
                     <li><a href="index.html" aria-current="page">Whoami</a></li>
                     <li><a href="projecten.html">Projecten</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="school-opdracht/index.html">Schoolopdracht</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main id="hoofdinhoud">
-        <h1>Whoami</h1>
+    <section class="hero" aria-labelledby="hero-titel">
+        <div class="hero__inner">
+            <img class="hero__foto" src="images/profielfoto.jpg"
+                 alt="Portretfoto van Erim Kocak" width="600" height="600">
 
-        <section class="intro" aria-labelledby="intro-titel">
-            <img class="intro__foto" src="images/profielfoto.svg" alt="Portretfoto van Erim Kocak" width="160" height="160">
+            <div class="hero__tekst">
+                <p class="hero__rol">Student software engineering</p>
+                <h1 id="hero-titel">Hoi, ik ben Erim.</h1>
+                <p>
+                    Ik bouw webapplicaties die je meteen kunt gebruiken - van een website voor een
+                    echte ondernemer tot een tool die een team dagelijks helpt bij zijn werk.
+                </p>
 
-            <div class="intro__tekst">
-                <h2 id="intro-titel">Student software engineering, bouwer van webapplicaties</h2>
-                <p>
-                    Ik ben Erim, student software engineering aan De Haagse Hogeschool. Ik werk het liefst
-                    aan projecten waar je het resultaat direct kunt gebruiken: een website voor een echte
-                    ondernemer, of een applicatie die een team dagelijks helpt bij zijn werk.
-                </p>
-                <p>
-                    In teamprojecten werk ik veel met Java, daarnaast bouw ik zelf webapplicaties met
-                    HTML, CSS en JavaScript. Ik vind het belangrijk dat wat ik maak niet alleen werkt,
-                    maar ook leesbaar, toegankelijk en uitbreidbaar is.
-                </p>
+                <div class="knoppen">
+                    <a class="knop knop--primair" href="projecten.html">Bekijk mijn projecten</a>
+                    <a class="knop knop--secundair" href="mailto:erimardakocak@gmail.com">Neem contact op</a>
+                </div>
             </div>
-        </section>
-        <section class="demos" aria-labelledby="demos-titel">
-            <h2 id="demos-titel">Demo's</h2>
+        </div>
+    </section>
 
-            <ul class="demos__lijst">
-                <li>
-                    <video class="demo" controls muted playsinline preload="metadata" width="640" height="360">
-                        <source src="videos/demo-1.webm" type="video/webm">
-                        <source src="videos/demo-1.mp4" type="video/mp4">
-                        Je browser ondersteunt geen video. <a href="videos/demo-1.mp4">Download de demo</a>.
-                    </video>
-                </li>
-                <li>
-                    <video class="demo" controls muted playsinline preload="metadata" width="640" height="360">
-                        <source src="videos/demo-2.webm" type="video/webm">
-                        <source src="videos/demo-2.mp4" type="video/mp4">
-                        Je browser ondersteunt geen video. <a href="videos/demo-2.mp4">Download de demo</a>.
-                    </video>
-                </li>
-            </ul>
+    <main id="hoofdinhoud">
+        <section aria-labelledby="intro-titel">
+            <h2 id="intro-titel" class="kop-met-streep">Over mij</h2>
+            <p>
+                Ik ben student software engineering aan De Haagse Hogeschool. Ik werk het liefst
+                aan projecten waar het resultaat direct zichtbaar is: een site voor een echte
+                ondernemer, of een applicatie die een team elke dag gebruikt.
+            </p>
+            <p>
+                In teamprojecten werk ik veel met Java. Daarnaast bouw ik zelf webapplicaties met
+                HTML, CSS en JavaScript. Ik vind het belangrijk dat wat ik maak niet alleen werkt,
+                maar ook leesbaar, toegankelijk en uitbreidbaar is.
+            </p>
+
+            <dl class="feiten">
+                <div class="feit">
+                    <dt>Opleiding</dt>
+                    <dd>Software Engineering, De Haagse Hogeschool</dd>
+                </div>
+                <div class="feit">
+                    <dt>Werkt met</dt>
+                    <dd>Java, HTML, CSS, JavaScript, Git</dd>
+                </div>
+                <div class="feit">
+                    <dt>Locatie</dt>
+                    <dd>Den Haag, Nederland</dd>
+                </div>
+            </dl>
         </section>
+
         <section aria-labelledby="vaardigheden-titel">
-            <h2 id="vaardigheden-titel">Waar ik mee werk</h2>
+            <h2 id="vaardigheden-titel" class="kop-met-streep">Waar ik mee werk</h2>
 
             <ul class="kaarten">
                 <li class="kaart">
+                    <p class="kaart__icoon" aria-hidden="true">&#128421;</p>
                     <h3>Front-end</h3>
                     <p>Semantische HTML5, responsive CSS3 en JavaScript. Aandacht voor toegankelijkheid en contrast.</p>
                 </li>
                 <li class="kaart">
+                    <p class="kaart__icoon" aria-hidden="true">&#9881;</p>
                     <h3>Back-end</h3>
                     <p>Java in teamprojecten, plus de basis van databases en het request/response-model achter een webapplicatie.</p>
                 </li>
                 <li class="kaart">
+                    <p class="kaart__icoon" aria-hidden="true">&#129309;</p>
                     <h3>Samenwerken</h3>
                     <p>Git en GitHub voor versiebeheer, werken in sprints en feedback van medestudenten en docenten verwerken.</p>
                 </li>
             </ul>
         </section>
 
-        <section aria-labelledby="contact-titel">
-            <h2 id="contact-titel">Contact</h2>
+        <section aria-labelledby="nu-titel">
+            <h2 id="nu-titel" class="kop-met-streep">Waar ik nu mee bezig ben</h2>
+            <div class="nu">
+                <p>
+                    Ik werk aan een casemanagementplatform voor een Security Operations Center
+                    (teamproject in Java) en verbeter ondertussen deze portfoliosite. Daarnaast
+                    verdiep ik me in toegankelijkheid en in het schrijven van CSS die makkelijk
+                    uit te leggen blijft.
+                </p>
+            </div>
+        </section>
+
+        <section class="cta" aria-labelledby="contact-titel">
+            <h2 id="contact-titel">Samen iets bouwen?</h2>
             <p>
-                Vragen over een project of samenwerken? Mail me op
-                <a href="mailto:erimardakocak@gmail.com">erimardakocak@gmail.com</a>
-                of bekijk mijn werk op
-                <a href="https://github.com/erimk240">GitHub</a>.
+                Vragen over een project of zin om samen te werken? Ik hoor het graag.
             </p>
+            <div class="knoppen">
+                <a class="knop knop--primair" href="mailto:erimardakocak@gmail.com">Stuur een mail</a>
+                <a class="knop knop--secundair" href="https://github.com/erimk240">Bekijk mijn GitHub</a>
+            </div>
         </section>
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2026 Erim Kocak - portfolio voor het vak WPFW, De Haagse Hogeschool.</p>
+        <div class="site-footer__inner">
+            <p>&copy; 2026 Erim Kocak</p>
+            <nav class="site-footer__links" aria-label="Footer">
+                <a href="mailto:erimardakocak@gmail.com">E-mail</a>
+                <a href="https://github.com/erimk240">GitHub</a>
+                <a href="projecten.html">Projecten</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+        </div>
     </footer>
 </body>
 </html>

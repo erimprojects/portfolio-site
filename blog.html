@@ -25,14 +25,14 @@
     </header>
 
     <main id="hoofdinhoud">
-        <h1>Blog</h1>
+        <h1 class="kop-met-streep">Blog</h1>
         <p class="pagina-intro">
             Korte stukken over wat ik tegenkom tijdens het bouwen: keuzes die ik maak, fouten die ik
             maak en wat ik daarvan leer.
         </p>
 
         <section aria-labelledby="posts-titel">
-            <h2 id="posts-titel">Recente posts</h2>
+            <h2 id="posts-titel" class="kop-met-streep">Recente posts</h2>
 
             <ul class="posts">
                 <li>
@@ -84,7 +84,15 @@
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2026 Erim Kocak - portfolio voor het vak WPFW, De Haagse Hogeschool.</p>
+        <div class="site-footer__inner">
+            <p>&copy; 2026 Erim Kocak</p>
+            <nav class="site-footer__links" aria-label="Footer">
+                <a href="mailto:erimardakocak@gmail.com">E-mail</a>
+                <a href="https://github.com/erimk240">GitHub</a>
+                <a href="index.html">Whoami</a>
+                <a href="projecten.html">Projecten</a>
+            </nav>
+        </div>
     </footer>
 </body>
 </html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>D'or Beauty – Schoonheidssalon</title>
+<meta name="description" content="D'or Beauty – schoonheidssalon voor huidverzorging en ontspanning. Persoonlijke behandelingen met aandacht, rust en precisie." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Instrument+Serif:ital@0;1&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFF1EA;
+    --mist:#DCE3D3;
+    --mist-2:#CBD4BF;
+    --ink:#191F1A;
+    --stone:#4C5347;
+    --sage:#5C7351;
+    --sage-deep:#3F5238;
+    --rose:#B5736A;
+    --line:rgba(25,31,26,.22);
+
+    --display:"Bricolage Grotesque","Helvetica Neue",sans-serif;
+    --body:"Karla",system-ui,sans-serif;
+    --serif:"Instrument Serif",Georgia,serif;
+
+    --pad:clamp(1.25rem,5vw,5.5rem);
+    --arch:999px 999px 20px 20px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--body);font-weight:400;
+    font-size:clamp(1rem,.3vw + .94rem,1.08rem);line-height:1.68;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  ::selection{background:var(--sage);color:var(--paper)}
+  :focus-visible{outline:2px solid var(--sage);outline-offset:3px}
+
+  section{padding:clamp(4rem,9vw,8rem) var(--pad);scroll-margin-top:5rem}
+  .wrap{max-width:1140px;margin:0 auto}
+
+  h2{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1.9rem,4.4vw,3.2rem);line-height:1.02;
+    letter-spacing:-.035em;margin:0 0 1.1rem;
+  }
+  h2 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--sage-deep)}
+
+  .eyebrow{
+    font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--sage-deep);font-weight:600;margin:0 0 1rem;
+  }
+
+  .btn{
+    display:inline-flex;align-items:center;gap:.55rem;
+    padding:.9rem 1.7rem;border-radius:999px;font-family:var(--body);
+    font-size:.8rem;letter-spacing:.06em;text-decoration:none;font-weight:500;
+    transition:background .3s,color .3s,border-color .3s,transform .3s;
+  }
+  .btn-ink{background:var(--ink);color:var(--paper);border:1px solid var(--ink)}
+  .btn-ink:hover{background:var(--sage-deep);border-color:var(--sage-deep);transform:translateY(-2px)}
+  .btn-line{background:transparent;color:var(--ink);border:1.5px solid rgba(25,31,26,.35)}
+  .btn-line:hover{border-color:var(--ink);transform:translateY(-2px)}
+
+  /* –– nav –– */
+  header{
+    position:fixed;inset:0 0 auto 0;z-index:50;display:flex;
+    align-items:center;justify-content:space-between;gap:1rem;
+    padding:1.1rem var(--pad);transition:background .4s,backdrop-filter .4s,box-shadow .4s,padding .4s;
+  }
+  header.stuck{background:rgba(239,241,234,.94);backdrop-filter:blur(12px);
+    box-shadow:0 1px 0 var(--line),0 8px 24px -20px rgba(25,31,26,.5);padding-top:.75rem;padding-bottom:.75rem}
+  .brand{
+    font-family:var(--display);font-weight:600;font-size:1.1rem;
+    letter-spacing:-.03em;text-decoration:none;white-space:nowrap;
+  }
+  .brand span{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--sage-deep)}
+  nav{display:flex;align-items:center;gap:2rem}
+  nav a{font-size:.9rem;font-weight:500;text-decoration:none;color:var(--ink);opacity:.9;transition:opacity .3s,color .3s}
+  nav a:hover{opacity:1;color:var(--sage)}
+  .nav-cta{padding:.65rem 1.3rem;font-size:.78rem;opacity:1}
+  .burger{display:none;background:none;border:0;color:var(--ink);padding:.5rem;cursor:pointer}
+
+  /* –– hero –– */
+  .hero{
+    padding:clamp(7rem,14vw,9.5rem) var(--pad) clamp(3rem,7vw,5rem);
+    background:linear-gradient(168deg,var(--mist-2) 0%,var(--mist) 38%,var(--paper) 82%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-inner{
+    max-width:1140px;margin:0 auto;display:grid;
+    grid-template-columns:1.08fr .92fr;gap:clamp(2rem,6vw,4.5rem);align-items:center;
+  }
+  .hero h1{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(2.6rem,7.6vw,5.4rem);line-height:.94;
+    letter-spacing:-.045em;margin:.4rem 0 0;
+  }
+  .hero h1 .it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+  .hero h1 .soft{color:var(--sage-deep)}
+  .hero-lede{max-width:40ch;color:var(--stone);margin:1.5rem 0 0;font-size:1.08rem}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2.1rem}
+
+  .arch{
+    position:relative;border-radius:var(--arch);overflow:hidden;
+    aspect-ratio:3/4;background:var(--mist-2);
+  }
+  .arch img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.08)}
+  .arch::after{
+    content:"";position:absolute;inset:0;border-radius:var(--arch);
+    box-shadow:inset 0 0 0 1px rgba(25,31,26,.18);
+  }
+  .arch-note{
+    position:absolute;left:50%;bottom:1.2rem;transform:translateX(-50%);
+    background:var(--ink);color:var(--paper);
+    padding:.55rem 1.2rem;border-radius:999px;font-size:.76rem;font-weight:500;
+    letter-spacing:.02em;white-space:nowrap;
+  }
+
+  .marquee{
+    margin-top:clamp(2.5rem,6vw,4rem);border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);overflow:hidden;padding:.9rem 0;
+  }
+  .marquee ul{
+    display:flex;gap:3rem;list-style:none;margin:0;padding:0;width:max-content;
+    animation:slide 34s linear infinite;
+  }
+  .marquee li{font-size:.78rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);white-space:nowrap}
+  .marquee li::before{content:"✦";margin-right:3rem;color:var(--sage-deep)}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .marquee:hover ul{animation-play-state:paused}
+
+  /* –– reveals –– */
+  .fade-up{opacity:0;transform:translateY(18px);
+    transition:opacity .85s ease,transform .85s cubic-bezier(.22,.61,.36,1)}
+  .is-in .fade-up{opacity:1;transform:none}
+  .hero .eyebrow,.hero h1,.hero-lede,.hero-actions,.arch{
+    animation:rise .95s cubic-bezier(.22,.61,.36,1) both}
+  .hero .eyebrow{animation-delay:.05s}
+  .hero h1{animation-delay:.15s}
+  .hero-lede{animation-delay:.3s}
+  .hero-actions{animation-delay:.42s}
+  .arch{animation-delay:.2s}
+  @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+  /* –– salon –– */
+  .salon .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+  .salon p{margin:0 0 1.05rem;color:var(--stone)}
+  .salon p.lead{color:var(--ink);font-size:1.2rem;line-height:1.58;font-weight:500}
+  .sign{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--sage-deep);display:block;margin-top:1.5rem}
+
+  /* –– behandelingen –– */
+  .menu-head{max-width:50ch;margin-bottom:clamp(2.2rem,5vw,3.5rem)}
+  .menu-head p{color:var(--stone);margin:0}
+  .cat{
+    margin-bottom:clamp(1.6rem,3.5vw,2.4rem);background:#FBFCF8;
+    border:1px solid var(--line);border-radius:20px;
+    padding:clamp(1.3rem,3vw,2rem) clamp(1.2rem,3vw,2rem);
+  }
+  .cat h3{
+    font-family:var(--display);font-weight:600;letter-spacing:-.03em;
+    font-size:clamp(1.2rem,2.2vw,1.55rem);margin:0 0 .4rem;
+    padding-bottom:.9rem;border-bottom:2px solid var(--sage);
+  }
+  .item{
+    display:grid;grid-template-columns:1fr auto;gap:.3rem 1.4rem;align-items:baseline;
+    padding:1rem 0;border-bottom:1px solid rgba(25,31,26,.12);
+  }
+  .item:last-child{border-bottom:0}
+  .item .name{font-size:1.06rem;font-weight:500}
+  .item .desc{grid-column:1/-1;font-size:.9rem;color:var(--stone);max-width:58ch;margin-top:.15rem}
+  .item .price{font-family:var(--serif);font-size:1.32rem;color:var(--sage-deep);white-space:nowrap}
+  .item .price small{display:block;font-family:var(--body);font-size:.74rem;color:var(--stone);text-align:right}
+
+  /* –– pijlers –– */
+  .pijlers{background:var(--mist);border-block:1px solid var(--line)}
+  .pijler-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.4rem,4vw,3rem);margin-top:2.6rem}
+  .pijler{background:#FBFCF8;border:1px solid var(--line);border-radius:20px;padding:1.8rem 1.6rem}
+  .pijler .k{font-family:var(--serif);font-style:italic;font-size:1.7rem;color:var(--sage-deep);display:block;line-height:1}
+  .pijler h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;font-size:1.24rem;margin:.9rem 0 .6rem}
+  .pijler p{color:var(--stone);margin:0;font-size:.94rem}
+
+  /* –– afspraak –– */
+  .afspraak-intro{max-width:52ch}
+  .afspraak-intro p{color:var(--stone);margin:0}
+  .booking{max-width:1140px;margin:clamp(2.2rem,5vw,3.2rem) auto 0}
+  .booking-frame{
+    border:1px solid var(--line);border-radius:22px;overflow:hidden;
+    background:#fff;box-shadow:0 26px 50px -30px rgba(25,31,26,.45);
+  }
+  .booking-frame iframe{display:block;width:100%;height:600px;border:0}
+  .booking-note{margin:1rem 0 0;font-size:.86rem;color:var(--stone);text-align:center}
+  .booking-note a{color:var(--sage-deep);font-weight:500;text-decoration:none;border-bottom:1px solid var(--sage)}
+  .booking-note a:hover{color:var(--ink)}
+
+  .contact-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,4.5rem);margin-top:clamp(3.5rem,7vw,5rem)}
+  .contact-list{list-style:none;margin:1.6rem 0 0;padding:0}
+  .contact-list li{display:flex;justify-content:space-between;gap:1.5rem;align-items:baseline;
+    flex-wrap:wrap;padding:1rem 0;border-bottom:1px solid rgba(25,31,26,.14)}
+  .contact-list .k{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--stone)}
+  .contact-list .v{font-family:var(--serif);font-size:1.2rem}
+  .contact-list a{text-decoration:none;border-bottom:1px solid var(--line);transition:color .3s,border-color .3s}
+  .contact-list a:hover{color:var(--sage-deep);border-color:var(--sage-deep)}
+  .card{background:var(--mist);border:1px solid var(--line);border-radius:20px;padding:clamp(1.4rem,3vw,2.1rem)}
+  .card h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;font-size:1.24rem;margin:0 0 1rem}
+  .hours{list-style:none;margin:0;padding:0}
+  .hours li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;
+    font-size:.95rem;color:var(--stone);border-bottom:1px solid rgba(25,31,26,.14)}
+  .hours li:last-child{border-bottom:0}
+  .hours li span:last-child{color:var(--ink);font-weight:500}
+
+  /* –– footer –– */
+  footer{background:var(--ink);color:var(--paper);padding:clamp(3rem,6vw,4.5rem) var(--pad) 2rem}
+  .foot-grid{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;
+    align-items:flex-end;gap:2rem;flex-wrap:wrap}
+  .foot-mark{font-family:var(--display);font-weight:600;letter-spacing:-.04em;
+    font-size:clamp(2rem,5vw,3.2rem);line-height:1;margin:0}
+  .foot-mark span{font-family:var(--serif);font-style:italic;font-weight:400;color:#9BB08E}
+  .foot-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+  .foot-links a{font-size:.86rem;text-decoration:none;color:rgba(239,241,234,.8);transition:color .3s}
+  .foot-links a:hover{color:var(--paper)}
+  .copy{max-width:1140px;margin:2.4rem auto 0;font-size:.78rem;color:rgba(239,241,234,.6);
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+  .float-wa{
+    position:fixed;right:1.1rem;bottom:1.1rem;z-index:40;width:52px;height:52px;
+    border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--paper);
+    text-decoration:none;box-shadow:0 10px 26px -10px rgba(30,36,32,.5);
+    transition:transform .3s,background .3s;
+  }
+  .float-wa:hover{transform:scale(1.07);background:var(--sage-deep)}
+
+  @media (max-width:900px){
+    nav{position:fixed;inset:0 0 auto 0;flex-direction:column;align-items:flex-start;gap:.2rem;
+      padding:5rem var(--pad) 2rem;background:rgba(239,241,234,.99);backdrop-filter:blur(12px);
+      box-shadow:0 1px 0 var(--line);transform:translateY(-102%);
+      transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+    nav.open{transform:translateY(0)}
+    nav a{font-size:1.05rem;padding:.65rem 0}
+    .nav-cta{margin-top:.8rem}
+    .burger{display:block;z-index:60}
+    .hero-inner{grid-template-columns:1fr}
+    .arch{order:-1;aspect-ratio:4/5;max-height:56svh}
+    .salon .wrap,.contact-wrap{grid-template-columns:1fr}
+    .pijler-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .item{grid-template-columns:1fr}
+    .item .price{text-align:left}
+    .item .price small{text-align:left}
+    .booking-frame iframe{height:620px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms!important;animation-delay:0ms!important;
+      transition-duration:.001ms!important;animation-iteration-count:1!important}
+    html{scroll-behavior:auto}
+    .fade-up{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header id="top-bar">
+  <a class="brand" href="#top">D<span>'</span>or Beauty</a>
+  <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="menu">
+    <svg width="24" height="14" viewBox="0 0 24 14" fill="none" aria-hidden="true"><path d="M0 1h24M0 7h24M0 13h16" stroke="currentColor" stroke-width="1.3"/></svg>
+  </button>
+  <nav id="menu">
+    <a href="#salon">Salon</a>
+    <a href="#behandelingen">Behandelingen</a>
+    <a href="#afspraak">Afspraak</a>
+    <a class="btn btn-ink nav-cta" href="#afspraak">Afspraak maken</a>
+  </nav>
+</header>
+
+<!-- –– HERO –– -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow">Schoonheidssalon</p>
+      <h1>Een uur dat<br><span class="it soft">helemaal</span> van<br>jou is.</h1>
+      <p class="hero-lede">Rustige handen, hoogwaardige producten en alle tijd voor je huid. Je stapt binnen zoals je bent en gaat stralend weer weg.</p>
+      <div class="hero-actions">
+        <a class="btn btn-ink" href="#afspraak">Maak een afspraak</a>
+        <a class="btn btn-line" href="#behandelingen">Bekijk behandelingen</a>
+      </div>
+    </div>
+    <div class="arch">
+      <img src="https://primary.jwwb.nl/public/q/e/h/temp-igfvrfqgrkqwyjalkoox/c8e8b360-d21b-489a-973f-496a1df658f8-high.jpg" alt="Behandeling bij D'or Beauty" />
+      <span class="arch-note">Beauty &amp; ontspanning</span>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <ul>
+      <li>Gezichtsbehandelingen</li><li>Laser ontharing</li><li>Huidanalyse</li><li>Deep cleaning</li><li>Persoonlijk advies</li>
+      <li>Gezichtsbehandelingen</li><li>Laser ontharing</li><li>Huidanalyse</li><li>Deep cleaning</li><li>Persoonlijk advies</li>
+    </ul>
+  </div>
+</section>
+
+<!-- –– SALON –– -->
+<section class="salon" id="salon">
+  <div class="wrap reveal">
+    <div>
+      <p class="eyebrow fade-up">De salon</p>
+      <h2 class="fade-up">Gedreven door <em>passie</em></h2>
+    </div>
+    <div class="fade-up">
+      <p class="lead">Bij D'or Beauty draait alles om jou. Ik neem de tijd om te luisteren, mee te denken en elke behandeling af te stemmen op wat jouw huid op dat moment nodig heeft.</p>
+      <p>Geen haast, geen standaardprotocol. Wel rust, oprechte aandacht en een resultaat waar je mee thuiskomt. Of je nu komt voor een grondige gezichtsbehandeling of even een uur voor jezelf wilt: je bent hier in goede handen.</p>
+      <p>Ik werk met hoogwaardige producten en beproefde technieken, zodat elke behandeling op hetzelfde niveau ligt: het hoogste.</p>
+      <span class="sign">D'or Beauty</span>
+    </div>
+  </div>
+</section>
+
+<!-- –– BEHANDELINGEN –– -->
+<section id="behandelingen">
+  <div class="wrap reveal">
+    <div class="menu-head">
+      <p class="eyebrow fade-up">Behandelingen</p>
+      <h2 class="fade-up">Wat je bij ons <em>kunt doen</em></h2>
+      <p class="fade-up">Weet je niet welke behandeling bij je past? Begin met de huidanalyse – dan kijken we samen.</p>
+    </div>
+
+    <div class="cat fade-up">
+      <h3>Gezichtsbehandelingen</h3>
+      <div class="item">
+        <span class="name">Huidanalyse &amp; proefbehandeling</span>
+        <span class="price">€ 30,00 <small>30 min</small></span>
+        <span class="desc">Kort en vrijblijvend: we kijken samen naar je huid en welke behandeling past.</span>
+      </div>
+      <div class="item">
+        <span class="name">Introduction Facial</span>
+        <span class="price">€ 49,99 <small>60 min</small></span>
+        <span class="desc">Complete kennismaking met de basisverzorging van je huid.</span>
+      </div>
+      <div class="item">
+        <span class="name">Relaxing Facial</span>
+        <span class="price">€ 50,00 <small>60 min</small></span>
+        <span class="desc">Verzorging met massage – een uur waarin je helemaal tot rust komt.</span>
+      </div>
+      <div class="item">
+        <span class="name">Deep cleaning</span>
+        <span class="price">€ 75,00 <small>60 min</small></span>
+        <span class="desc">Grondige dieptereiniging voor een huid die weer kan ademen.</span>
+      </div>
+    </div>
+
+    <!-- Vul hier de laserbehandelingen en prijzen aan -->
+    <div class="cat fade-up">
+      <h3>Laser ontharing</h3>
+      <div class="item">
+        <span class="name">Losse zones en pakketten</span>
+        <span class="price">Vanaf € – <small>op aanvraag</small></span>
+        <span class="desc">Het volledige overzicht met zones en prijzen vind je in de agenda hieronder. Twijfel je welke zones je nodig hebt? Stuur gerust een appje.</span>
+      </div>
+    </div>
+
+    <div class="fade-up">
+      <a class="btn btn-ink" href="#afspraak">Boek een behandeling</a>
+    </div>
+  </div>
+</section>
+
+<!-- –– PIJLERS –– -->
+<section class="pijlers">
+  <div class="wrap reveal">
+    <p class="eyebrow fade-up">Waarom D'or</p>
+    <h2 class="fade-up">Drie dingen die ik <em>nooit</em> loslaat</h2>
+    <div class="pijler-grid">
+      <div class="pijler fade-up">
+        <span class="k">Aandacht</span>
+        <h3>Jij staat op nummer één</h3>
+        <p>Elke behandeling begint met luisteren. Jouw wensen, jouw huid, jouw tempo – daar stem ik alles op af.</p>
+      </div>
+      <div class="pijler fade-up">
+        <span class="k">Vakwerk</span>
+        <h3>Precies en zorgvuldig</h3>
+        <p>Rustige handen, de juiste techniek en de tijd die een behandeling écht nodig heeft. Nooit gehaast.</p>
+      </div>
+      <div class="pijler fade-up">
+        <span class="k">Kwaliteit</span>
+        <h3>Producten die werken</h3>
+        <p>Ik werk uitsluitend met hoogwaardige producten, zodat het resultaat ook thuis zichtbaar blijft.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- –– AFSPRAAK –– -->
+<section id="afspraak">
+  <div class="wrap reveal">
+    <div class="afspraak-intro">
+      <p class="eyebrow fade-up">Afspraak</p>
+      <h2 class="fade-up">Tot <em>binnenkort</em></h2>
+      <p class="fade-up">Kies hieronder je behandeling en een moment dat jou uitkomt. Je ziet direct welke tijden vrij zijn en krijgt meteen een bevestiging.</p>
+    </div>
+  </div>
+
+  <!-- DEMO-BOEKINGSVENSTER
+       Straks vervangen door de embed-code van het echte boekingssysteem:
+       <iframe src="JOUW-BOEKINGSLINK" title="Afspraak maken"></iframe>
+       Dan mag het script "demo-boeking" onderaan weg. -->
+  <div class="booking reveal">
+    <div class="booking-frame fade-up">
+      <iframe id="boeking" title="Afspraak maken bij D'or Beauty" loading="lazy"></iframe>
+    </div>
+    <p class="booking-note fade-up">Lukt het boeken niet? Stuur gerust een <a href="https://api.whatsapp.com/send?phone=31627870405" target="_blank" rel="noopener">appje</a> – dan help ik je verder.</p>
+  </div>
+
+  <div class="wrap reveal">
+    <div class="contact-wrap">
+      <div>
+        <p class="eyebrow fade-up">Contact</p>
+        <p class="fade-up" style="color:var(--stone);max-width:44ch;margin:0">Voor vragen over een behandeling, advies of het verzetten van je afspraak.</p>
+        <ul class="contact-list fade-up">
+          <li><span class="k">WhatsApp</span><span class="v"><a href="https://api.whatsapp.com/send?phone=31627870405" target="_blank" rel="noopener">06 27 87 04 05</a></span></li>
+          <li><span class="k">Instagram</span><span class="v"><a href="https://instagram.com/d.orbeauty" target="_blank" rel="noopener">@d.orbeauty</a></span></li>
+          <li><span class="k">Adres</span><span class="v">Vul hier het adres in</span></li>
+        </ul>
+      </div>
+      <div class="card fade-up">
+        <h3>Openingstijden</h3>
+        <ul class="hours">
+          <li><span>Maandag</span><span>Gesloten</span></li>
+          <li><span>Dinsdag</span><span>09:00 – 18:00</span></li>
+          <li><span>Woensdag</span><span>09:00 – 18:00</span></li>
+          <li><span>Donderdag</span><span>09:00 – 21:00</span></li>
+          <li><span>Vrijdag</span><span>09:00 – 18:00</span></li>
+          <li><span>Zaterdag</span><span>09:00 – 16:00</span></li>
+          <li><span>Zondag</span><span>Gesloten</span></li>
+        </ul>
+        <p style="font-size:.84rem;color:var(--stone);margin:1.2rem 0 0">De vrije momenten in de agenda hierboven zijn altijd leidend.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <p class="foot-mark">D<span>'</span>or Beauty</p>
+    <div class="foot-links">
+      <a href="#salon">Salon</a>
+      <a href="#behandelingen">Behandelingen</a>
+      <a href="#afspraak">Afspraak</a>
+      <a href="https://instagram.com/d.orbeauty" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://api.whatsapp.com/send?phone=31627870405" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+  <div class="copy">
+    <span>© 2025–2026 D'or Beauty</span>
+    <span>Beauty &amp; ontspanning</span>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://api.whatsapp.com/send?phone=31627870405" target="_blank" rel="noopener" aria-label="Stel een vraag via WhatsApp">
+  <svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 2C6.5 2 2 6.5 2 12.05c0 1.78.47 3.45 1.28 4.9L2 22l5.2-1.24a10 10 0 0 0 4.85 1.24h.01c5.55 0 10.05-4.5 10.05-10.05C22.1 6.5 17.6 2 12.05 2z"/></svg>
+</a>
+
+<script>
+  const bar = document.getElementById('top-bar');
+  const onScroll = () => bar.classList.toggle('stuck', window.scrollY > 40);
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  burger.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+  }));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal').forEach(block => {
+    block.querySelectorAll('.fade-up').forEach((el, i) => { el.style.transitionDelay = (i * 85) + 'ms'; });
+  });
+
+  // –– demo-boeking ––––––––––––––––––––––––––––––––––––––––––––––
+  // Vult de iframe met een nagebootst boekingsscherm.
+  // Verwijder dit blok zodra de echte embed-link erin staat.
+  (function () {
+    const frame = document.getElementById('boeking');
+    if (!frame) return;
+
+    const diensten = {
+      'Gezichtsbehandelingen': [
+        ['Huidanalyse &amp; proefbehandeling','30 minuten','€ 30,00'],
+        ['Introduction Facial','60 minuten','€ 49,99'],
+        ['Relaxing Facial','60 minuten','€ 50,00'],
+        ['Deep cleaning','60 minuten','€ 75,00']
+      ],
+      'Laser ontharing': [
+        ['Bovenlip','15 minuten','€ 20,00'],
+        ['Oksels','20 minuten','€ 35,00'],
+        ['Onderbenen','30 minuten','€ 60,00'],
+        ['Bikinilijn','20 minuten','€ 40,00']
+      ],
+      'Laser pakketten': [
+        ['Pakket klein – 6 sessies','15 minuten','€ 99,00'],
+        ['Pakket middel – 6 sessies','25 minuten','€ 179,00'],
+        ['Pakket groot – 6 sessies','45 minuten','€ 299,00']
+      ]
+    };
+    const tabs = Object.keys(diensten);
+
+    const doc = `<!DOCTYPE html><html lang="nl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500&family=Instrument+Serif&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#fff;--mist:#DCE3D3;--ink:#191F1A;--stone:#4C5347;--sage:#5C7351;--sage-deep:#3F5238;--line:rgba(25,31,26,.2)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Karla",system-ui,sans-serif;font-weight:400}
+  .kop{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.4rem;border-bottom:1px solid var(--line)}
+  .kop h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;letter-spacing:-.03em;font-size:1.12rem;margin:0}
+  .stap{font-size:.72rem;color:var(--stone)}
+  .tabs{display:flex;gap:.5rem;padding:1rem 1.4rem;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;background:transparent;color:var(--stone);border:1.5px solid var(--line);border-radius:999px;
+       padding:.5rem 1.1rem;font:inherit;font-size:.84rem;font-weight:500;cursor:pointer;white-space:nowrap;
+       transition:background .3s,color .3s,border-color .3s}
+  .tab:hover{color:var(--ink);border-color:var(--ink)}
+  .tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+  .zoek{margin:0 1.4rem;display:flex;align-items:center;gap:.7rem;background:var(--mist);border-radius:999px;padding:.65rem 1rem;color:var(--stone)}
+  .zoek input{flex:1;background:none;border:0;color:var(--ink);font:inherit;font-size:.92rem;outline:none}
+  .cat{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-deep);padding:1.5rem 1.4rem .3rem}
+  .rij{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.9rem;padding:.9rem 1.4rem;
+       border-bottom:1px solid rgba(25,31,26,.12);cursor:pointer;transition:background .25s}
+  .rij:hover{background:rgba(92,115,81,.1)}
+  .rij input{position:absolute;opacity:0;pointer-events:none}
+  .vink{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);display:block;position:relative;transition:border-color .25s}
+  .rij:has(input:checked) .vink{border-color:var(--sage)}
+  .vink::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--sage);transform:scale(0);
+       transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+  .rij:has(input:checked) .vink::after{transform:scale(1)}
+  .rij:has(input:focus-visible) .vink{outline:2px solid var(--sage);outline-offset:3px}
+  .titel{display:block;font-size:1.02rem;font-weight:500}
+  .duur{display:block;font-size:.8rem;color:var(--stone)}
+  .prijs{font-family:"Instrument Serif",Georgia,serif;font-size:1.28rem;color:var(--sage-deep);white-space:nowrap}
+  .balk{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:1rem 1.4rem;
+        display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .keuze{font-size:.85rem;color:var(--stone)}
+  .keuze b{font-weight:500;color:var(--ink)}
+  .verder{background:var(--ink);color:#fff;border:0;border-radius:999px;padding:.75rem 1.6rem;font:inherit;
+          font-size:.82rem;font-weight:500;cursor:pointer;transition:background .3s,transform .3s,opacity .3s}
+  .verder:hover{background:var(--sage-deep);transform:translateY(-2px)}
+  .verder:disabled{opacity:.35;cursor:not-allowed;transform:none;background:var(--ink)}
+  .melding{padding:.9rem 1.4rem;font-size:.84rem;font-weight:500;color:var(--sage-deep);border-top:1px solid var(--line);display:none}
+  @media (prefers-reduced-motion:reduce){*{transition-duration:.001ms!important}}
+</style></head><body>
+  <div class="kop"><h1>Kies je behandeling</h1><span class="stap">Stap 1 van 3</span></div>
+  <div class="tabs" role="tablist">
+    ${tabs.map((t,i)=>`<button class="tab" role="tab" aria-selected="${i===0}" data-cat="${t}">${t}</button>`).join('')}
+  </div>
+  <div class="zoek">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+    <input type="search" placeholder="Zoek een behandeling" aria-label="Zoek een behandeling">
+  </div>
+  <p class="cat" id="cat">${tabs[0]}</p>
+  <div id="lijst"></div>
+  <div class="balk">
+    <span class="keuze" id="keuze">Nog niets gekozen</span>
+    <button class="verder" id="verder" disabled>Kies datum &amp; tijd</button>
+  </div>
+  <p class="melding" id="melding">Dit is een demo. In de echte site opent hier de agenda met beschikbare tijden.</p>
+<script>
+  const data = ${JSON.stringify(diensten)};
+  const lijstEl = document.getElementById('lijst');
+  const catEl = document.getElementById('cat');
+  const keuzeEl = document.getElementById('keuze');
+  const verderEl = document.getElementById('verder');
+  const meldingEl = document.getElementById('melding');
+  const zoekEl = document.querySelector('.zoek input');
+  let actief = ${JSON.stringify(tabs[0])};
+
+  function teken(filter){
+    const f = (filter || '').toLowerCase();
+    const items = data[actief].filter(d => d[0].toLowerCase().includes(f));
+    catEl.textContent = actief;
+    lijstEl.innerHTML = items.length ? items.map(d =>
+      '<label class="rij"><input type="radio" name="dienst" value="' + d[0] + '">' +
+      '<span class="vink" aria-hidden="true"><\/span>' +
+      '<span><span class="titel">' + d[0] + '<\/span><span class="duur">' + d[1] + '<\/span><\/span>' +
+      '<span class="prijs">' + d[2] + '<\/span><\/label>').join('')
+      : '<p style="padding:1.6rem 1.4rem;color:#4C5347;font-size:.92rem">Geen behandeling gevonden. Probeer een andere zoekterm.<\/p>';
+  }
+  teken('');
+
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected','false'));
+    t.setAttribute('aria-selected','true');
+    actief = t.dataset.cat; zoekEl.value = ''; teken('');
+    keuzeEl.textContent = 'Nog niets gekozen'; verderEl.disabled = true;
+  }));
+  zoekEl.addEventListener('input', e => teken(e.target.value));
+  lijstEl.addEventListener('change', e => {
+    if (e.target.name !== 'dienst') return;
+    keuzeEl.innerHTML = 'Gekozen: <b>' + e.target.value + '<\/b>';
+    verderEl.disabled = false;
+  });
+  verderEl.addEventListener('click', () => { meldingEl.style.display = 'block'; });
+<\/script></body></html>`;
+
+    frame.srcdoc = doc;
+  })();
+</script>
+</body>
+</html>

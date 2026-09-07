@@ -25,28 +25,27 @@
     </header>
 
     <main id="hoofdinhoud">
-        <h1>Projecten</h1>
+        <h1 class="kop-met-streep">Projecten</h1>
         <p class="pagina-intro">
             Een selectie van projecten waar ik aan gewerkt heb. Per project staat kort wat het is,
             voor wie het bedoeld is en welke technieken ik gebruikt heb.
         </p>
 
         <section aria-labelledby="projecten-titel">
-            <h2 id="projecten-titel">Uitgelicht werk</h2>
+            <h2 id="projecten-titel" class="kop-met-streep">Uitgelicht werk</h2>
 
             <ul class="kaarten">
                 <li>
                     <article class="kaart">
                         <h3>D'or Beauty - salonwebsite</h3>
                         <p>
-                            Een volledig op maat gebouwde website voor een Nederlandse beautysalon.
-                            De site is bedoeld voor klanten die snel willen zien welke behandelingen er zijn
-                            en direct een afspraak willen maken.
+                            Een op maat gebouwde website voor een Nederlandse beautysalon. Klanten zien in
+                            een oogopslag welke behandelingen er zijn en maken direct een afspraak.
                         </p>
                         <p>
-                            Ik heb twee complete varianten uitgewerkt - een donkere, luxe versie en een lichte,
-                            moderne versie - inclusief een ingesloten boekingsflow, een responsive layout en
-                            scroll-animaties.
+                            Deze lichte, warme versie heeft een rustige typografie, scroll-animaties en een
+                            ingebouwde boekingsflow: kies een categorie, filter op behandeling en ga door
+                            naar datum en tijd. De demo is volledig zelf gebouwd, zonder framework.
                         </p>
                         <ul class="technieken">
                             <li>HTML5</li>
@@ -54,7 +53,7 @@
                             <li>JavaScript</li>
                             <li>Responsive design</li>
                         </ul>
-                        <p><a class="kaart__link" href="https://dorbeauty.nl">Bekijk de site <span class="sr-only">van D'or Beauty</span></a></p>
+                        <p><a class="kaart__link" href="projecten/dor-beauty.html">Bekijk de demo <span class="sr-only">van de D'or Beauty salonwebsite</span></a></p>
                     </article>
                 </li>
 
@@ -100,10 +99,26 @@
                 </li>
             </ul>
         </section>
+
+        <section class="cta" aria-labelledby="cta-titel">
+            <h2 id="cta-titel">Meer weten over een project?</h2>
+            <p>Stuur me een bericht, dan vertel ik er graag meer over.</p>
+            <div class="knoppen">
+                <a class="knop knop--primair" href="mailto:erimardakocak@gmail.com">Stuur een mail</a>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2026 Erim Kocak - portfolio voor het vak WPFW, De Haagse Hogeschool.</p>
+        <div class="site-footer__inner">
+            <p>&copy; 2026 Erim Kocak</p>
+            <nav class="site-footer__links" aria-label="Footer">
+                <a href="mailto:erimardakocak@gmail.com">E-mail</a>
+                <a href="https://github.com/erimk240">GitHub</a>
+                <a href="index.html">Whoami</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+        </div>
     </footer>
 </body>
 </html>

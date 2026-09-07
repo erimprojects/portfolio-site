@@ -1,22 +1,28 @@
 /* ==========================================================================
    Portfolio Erim Kocak - hoofdstylesheet
-   Opbouw: 1 variabelen  2 reset  3 basis  4 header/nav  5 main  6 componenten
-           7 footer  8 media queries (mobile first: 480px / 768px / 1024px)
+   Opbouw: 1 variabelen  2 reset  3 basis  4 header/nav  5 hero  6 main
+           7 componenten  8 footer  9 media queries
+   Aanpak: mobile first (basis = smal scherm), extra lagen bij 48em en 64em.
    ========================================================================== */
 
 /* 1. Variabelen ----------------------------------------------------------- */
 :root {
-    --kleur-tekst: #1b1f26;
-    --kleur-tekst-zacht: #4a5260;
+    /* kleuren - getoetst op voldoende contrast (WCAG AA) */
+    --kleur-tekst: #14181f;
+    --kleur-tekst-zacht: #515b6b;
     --kleur-achtergrond: #ffffff;
-    --kleur-vlak: #f2f5f9;
-    --kleur-rand: #d3dae4;
-    --kleur-accent: #0b4f9e;
-    --kleur-accent-donker: #073a76;
-    --kleur-donker: #101724;
+    --kleur-vlak: #f4f6fb;
+    --kleur-rand: #e0e5ee;
+    --kleur-accent: #1f5fd0;
+    --kleur-accent-donker: #17469b;
+    --kleur-donker: #0d1220;
+
+    /* een zachte gradient voor de hero-achtergrond */
+    --hero-gradient: linear-gradient(135deg, #0d1220 0%, #16223d 55%, #1f2f52 100%);
 
     --lettertype: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
+    /* ruimte-schaal: overal dezelfde stappen gebruiken geeft rust */
     --ruimte-xs: 0.5rem;
     --ruimte-s: 1rem;
     --ruimte-m: 1.5rem;
@@ -24,7 +30,8 @@
     --ruimte-xl: 4rem;
 
     --max-breedte: 70rem;
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+    --schaduw: 0 1px 2px rgba(13, 18, 32, 0.06), 0 8px 24px rgba(13, 18, 32, 0.06);
 }
 
 /* 2. Reset ---------------------------------------------------------------- */
@@ -53,7 +60,7 @@ img {
     height: auto;
 }
 
-/* 3. Basis ---------------------------------------------------------------- */
+/* 3. Basis -------------------------------------------------------------- */
 body {
     font-family: var(--lettertype);
     font-size: 1rem;
@@ -64,14 +71,19 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3 {
-    line-height: 1.25;
-    /* rustige, leesbare regellengte voor koppen */
-    max-width: 30ch;
+h1, h2 {
+    line-height: 1.2;
+    /* rustige, leesbare regellengte voor grote koppen */
+    max-width: 26ch;
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    line-height: 1.3;
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.1rem;
     margin-bottom: var(--ruimte-m);
 }
 
@@ -102,7 +114,8 @@ a:hover {
 }
 
 /* zichtbare focus voor toetsenbordgebruikers */
-a:focus-visible {
+a:focus-visible,
+button:focus-visible {
     outline: 3px solid var(--kleur-accent);
     outline-offset: 3px;
     border-radius: 2px;
@@ -114,6 +127,17 @@ code {
     background-color: var(--kleur-vlak);
     padding: 0.1em 0.3em;
     border-radius: 3px;
+}
+
+/* een kleine accentstreep onder een kop */
+.kop-met-streep::after {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 3px;
+    margin-top: var(--ruimte-xs);
+    background-color: var(--kleur-accent);
+    border-radius: 999px;
 }
 
 /* alleen voorleesbaar, niet zichtbaar */
@@ -146,7 +170,7 @@ code {
     color: #ffffff;
 }
 
-/* 4. Header en navigatie -------------------------------------------------- */
+/* 4. Header en navigatie ---------------------------------------------- */
 .site-header {
     background-color: var(--kleur-donker);
     color: #ffffff;
@@ -203,7 +227,98 @@ code {
     border-bottom-color: #ffffff;
 }
 
-/* 5. Main ----------------------------------------------------------------- */
+/* 5. Hero (volle breedte, alleen op de whoami-pagina) --------------- */
+.hero {
+    background-image: var(--hero-gradient);
+    color: #ffffff;
+}
+
+.hero__inner {
+    max-width: var(--max-breedte);
+    margin: 0 auto;
+    padding: var(--ruimte-xl) var(--ruimte-s);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ruimte-l);
+    /* standaard 'stretch': tekstblok vult de volle breedte, dus regels breken netjes af */
+}
+
+.hero__foto {
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    object-fit: cover;
+    /* dubbele rand: accent-ring met wat lucht ertussen */
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    outline: 2px solid var(--kleur-accent);
+    outline-offset: 3px;
+}
+
+.hero h1 {
+    font-size: 2.4rem;
+    margin-bottom: var(--ruimte-s);
+}
+
+.hero__tekst p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.1rem;
+}
+
+.hero__rol {
+    display: inline-block;
+    margin-bottom: var(--ruimte-s);
+    padding: 0.2rem 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #cfe0ff;
+    background-color: rgba(31, 95, 208, 0.25);
+    border: 1px solid rgba(120, 165, 255, 0.4);
+    border-radius: 999px;
+}
+
+/* knoppenrij onder de hero-tekst */
+.knoppen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ruimte-s);
+    margin-top: var(--ruimte-m);
+}
+
+.knop {
+    display: inline-block;
+    padding: 0.7rem 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius);
+    border: 2px solid transparent;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.knop--primair {
+    background-color: var(--kleur-accent);
+    color: #ffffff;
+}
+
+.knop--primair:hover {
+    background-color: #3b78e0;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.knop--secundair {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+}
+
+.knop--secundair:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* 6. Main ------------------------------------------------------------- */
 main {
     max-width: var(--max-breedte);
     margin: 0 auto;
@@ -211,32 +326,21 @@ main {
 }
 
 main section {
-    margin-top: var(--ruimte-l);
+    margin-top: var(--ruimte-xl);
+}
+
+main section:first-child {
+    margin-top: 0;
 }
 
 .pagina-intro {
     color: var(--kleur-tekst-zacht);
-    font-size: 1.05rem;
+    font-size: 1.1rem;
 }
 
-/* 6. Componenten ---------------------------------------------------------- */
+/* 7. Componenten ---------------------------------------------------- */
 
-/* intro met foto op de whoami-pagina */
-.intro {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ruimte-m);
-}
-
-.intro__foto {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
-    background-color: var(--kleur-vlak);
-    border: 1px solid var(--kleur-rand);
-}
-
-/* kaartenraster: gebruikt voor vaardigheden en projecten */
+/* kaartenraster: gebruikt voor vaardigheden, projecten en blogposts */
 .kaarten,
 .posts {
     display: grid;
@@ -247,16 +351,35 @@ main section {
 .kaart {
     height: 100%;
     padding: var(--ruimte-m);
-    background-color: var(--kleur-vlak);
+    background-color: var(--kleur-achtergrond);
     border: 1px solid var(--kleur-rand);
     border-radius: var(--radius);
+    box-shadow: var(--schaduw);
+    /* accentstreep bovenaan de kaart */
+    border-top: 3px solid var(--kleur-accent);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* alleen kaarten met een link krijgen een hover-effect */
+.kaart:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 2px 4px rgba(13, 18, 32, 0.08), 0 16px 32px rgba(13, 18, 32, 0.1);
+}
+
+.kaart__icoon {
+    font-size: 1.6rem;
+    line-height: 1;
+    margin-bottom: var(--ruimte-xs);
 }
 
 .kaart__link,
 .post__link {
+    display: inline-block;
+    margin-top: var(--ruimte-xs);
     font-weight: 600;
 }
 
+/* rijtje met gebruikte technieken (pills) */
 .technieken {
     display: flex;
     flex-wrap: wrap;
@@ -267,14 +390,61 @@ main section {
 .technieken li {
     padding: 0.15rem 0.6rem;
     font-size: 0.875rem;
-    background-color: var(--kleur-achtergrond);
+    color: var(--kleur-accent-donker);
+    background-color: var(--kleur-vlak);
     border: 1px solid var(--kleur-rand);
     border-radius: 999px;
 }
 
+/* korte feiten-rij op de whoami-pagina */
+.feiten {
+    display: grid;
+    gap: var(--ruimte-s);
+    margin-top: var(--ruimte-m);
+}
+
+.feit {
+    padding: var(--ruimte-m);
+    background-color: var(--kleur-vlak);
+    border: 1px solid var(--kleur-rand);
+    border-radius: var(--radius);
+}
+
+.feit dt {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--kleur-tekst-zacht);
+}
+
+.feit dd {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+/* blokje "waar ik nu mee bezig ben" */
+.nu {
+    padding: var(--ruimte-m);
+    background-color: var(--kleur-vlak);
+    border: 1px solid var(--kleur-rand);
+    border-left: 4px solid var(--kleur-accent);
+    border-radius: var(--radius);
+}
+
+/* blogpost in de lijst */
 .post {
-    padding-bottom: var(--ruimte-m);
-    border-bottom: 1px solid var(--kleur-rand);
+    padding: var(--ruimte-m);
+    background-color: var(--kleur-achtergrond);
+    border: 1px solid var(--kleur-rand);
+    border-radius: var(--radius);
+    box-shadow: var(--schaduw);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.post:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 2px 4px rgba(13, 18, 32, 0.08), 0 16px 32px rgba(13, 18, 32, 0.1);
 }
 
 .post__meta {
@@ -283,53 +453,71 @@ main section {
     margin-bottom: var(--ruimte-xs);
 }
 
-/* demo-video's op de whoami-pagina */
-.demos__lijst {
-    display: grid;
-    gap: var(--ruimte-m);
-    margin-top: var(--ruimte-m);
-}
-
-.demo {
-    display: block;
-    width: 100%;
-    height: auto;
-    background-color: var(--kleur-donker);
-    border: 1px solid var(--kleur-rand);
+/* smalle oproep onderaan een pagina */
+.cta {
+    margin-top: var(--ruimte-xl);
+    padding: var(--ruimte-l);
+    text-align: center;
+    background-image: var(--hero-gradient);
+    color: #ffffff;
     border-radius: var(--radius);
 }
 
-@media (min-width: 48em) {
-    .demos__lijst {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.cta h2 {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* 7. Footer --------------------------------------------------------------- */
+.cta p {
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.cta .knoppen {
+    justify-content: center;
+}
+
+/* 8. Footer -------------------------------------------------------- */
 .site-footer {
     margin-top: var(--ruimte-xl);
-    padding: var(--ruimte-m) var(--ruimte-s);
-    background-color: var(--kleur-vlak);
-    border-top: 1px solid var(--kleur-rand);
+    padding: var(--ruimte-l) var(--ruimte-s);
+    background-color: var(--kleur-donker);
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.site-footer__inner {
+    max-width: var(--max-breedte);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--ruimte-s);
+}
+
+.site-footer a {
+    color: #ffffff;
+}
+
+.site-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ruimte-s) var(--ruimte-m);
 }
 
 .site-footer p {
-    max-width: var(--max-breedte);
-    margin: 0 auto;
-    color: var(--kleur-tekst-zacht);
     font-size: 0.9rem;
 }
 
-/* 8. Media queries -------------------------------------------------------- */
+/* 9. Media queries ----------------------------------------------- */
 
-/* tablet vanaf 768px: header naast elkaar, kaarten in twee kolommen */
+/* tablet vanaf 768px */
 @media (min-width: 48em) {
     h1 {
         font-size: 2.5rem;
     }
 
     h2 {
-        font-size: 1.75rem;
+        font-size: 1.8rem;
     }
 
     .site-header__inner {
@@ -343,18 +531,37 @@ main section {
         padding: var(--ruimte-xl) var(--ruimte-m);
     }
 
-    .intro {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: var(--ruimte-l);
+    /* hero: tekst links, foto rechts */
+    .hero__inner {
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--ruimte-xl);
+        padding: var(--ruimte-xl) var(--ruimte-m);
     }
 
-    .intro__foto {
+    .hero__foto {
+        width: 13rem;
+        height: 13rem;
         flex-shrink: 0;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
     }
 
     .kaarten {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feiten {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .site-footer__inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
 }
 
@@ -367,6 +574,11 @@ main section {
 
     .posts {
         gap: var(--ruimte-l);
+    }
+
+    .hero__foto {
+        width: 15rem;
+        height: 15rem;
     }
 }
 
