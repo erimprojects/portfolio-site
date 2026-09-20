@@ -1,30 +1,19 @@
-/* 
-   Portfolio Erim Kocak - stylesheet
-*/
-   
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* 2. Basis ----------------------------------------------------------- */
 body {
     font-family: system-ui, sans-serif;
     line-height: 1.6;
     color: #14181f;
     background-color: #fff;
-    /* voorkomt per ongeluk zijwaarts scrollen op smalle schermen */
-    overflow-x: hidden;
 }
 
 img {
     display: block;
-    max-width: 100%;
-}
-
-ul {
-    list-style: none;
+    max-width: 100%;   /* afbeelding wordt nooit breder dan zijn ruimte */
 }
 
 h1 {
@@ -45,7 +34,7 @@ h3 {
 }
 
 p {
-    max-width: 38rem;   /* kortere regels lezen prettiger */
+    max-width: 38rem;  
     margin-bottom: 1rem;
 }
 
@@ -57,7 +46,6 @@ a:hover {
     color: #17469b;
 }
 
-/* duidelijke rand als je met het toetsenbord navigeert */
 a:focus-visible {
     outline: 3px solid #1f5fd0;
     outline-offset: 3px;
@@ -67,38 +55,10 @@ code {
     font-family: monospace;
     background-color: #f4f6fb;
     padding: 0.1rem 0.3rem;
-    border-radius: 3px;
 }
 
-/* tekst alleen voor een screenreader, niet zichtbaar op het scherm */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-}
 
-/* link die naar de inhoud springt; alleen zichtbaar zodra hij focus krijgt */
-.skip-link {
-    position: absolute;
-    top: -3rem;
-    left: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #1f5fd0;
-    color: #fff;
-    text-decoration: none;
-}
-
-.skip-link:focus {
-    top: 0;
-}
-
-/* 3. Herbruikbaar -------------------------------------------------- */
-
-/* deze blokken zijn even breed en staan gecentreerd op de pagina */
 .site-header__inner,
-.hero__inner,
 main,
 .site-footer__inner {
     max-width: 70rem;
@@ -106,25 +66,12 @@ main,
     margin-right: auto;
 }
 
-/* accentstreepje onder een kop */
-.kop-met-streep::after {
-    content: "";
-    display: block;
-    width: 2.5rem;
-    height: 3px;
-    margin-top: 0.5rem;
-    background-color: #1f5fd0;
-}
-
-/* knop: blauw (primair) of met alleen een rand (secundair) */
 .knop {
     display: inline-block;
     padding: 0.7rem 1.3rem;
     font-weight: 600;
     text-decoration: none;
     border: 2px solid transparent;
-    border-radius: 0.5rem;
-    transition: 0.15s;   /* elke verandering duurt 0,15 seconde */
 }
 
 .knop--primair {
@@ -143,7 +90,7 @@ main,
 }
 
 .knop--secundair:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #17469b;
     color: #fff;
 }
 
@@ -155,7 +102,7 @@ main,
     margin-top: 1.5rem;
 }
 
-/* 4. Header ------------------------------------------------------ */
+/* 3. Header --------------------------------------------------------- */
 .site-header {
     background-color: #0d1220;
     color: #fff;
@@ -171,6 +118,9 @@ main,
 .site-logo {
     font-size: 1.15rem;
     font-weight: 700;
+    /* de standaardmarge van een <p> weghalen, anders staat het logo
+       niet gelijk met het menu ernaast */
+    margin-bottom: 0;
 }
 
 .site-logo a {
@@ -179,6 +129,7 @@ main,
 }
 
 .site-nav ul {
+    list-style: none;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem 1.5rem;
@@ -204,52 +155,42 @@ main,
     border-bottom-color: #fff;
 }
 
-/* 5. Hero ------------------------------------------------------ */
+/* 4. Hero ----------------------------------------------------------- */
 .hero {
-    background: linear-gradient(135deg, #0d1220, #1f2f52);
+    padding: 2.5rem 1.5rem;
+    background-color: #0d1220;
     color: #fff;
-}
-
-.hero__inner {
-    padding: 3rem 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+.hero p {
+    color: #d7dae0;
+    font-size: 1.1rem;
+}
+
+.hero h1 {
+    font-size: 2.4rem;
+}
+
+/* klein label boven de titel */
+.hero__rol {
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .hero__foto {
     width: 9rem;
     height: 9rem;
     border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.25);
     /* vult de cirkel netjes, zonder de foto uit te rekken */
     object-fit: cover;
 }
 
-.hero h1 {
-    font-size: 2.4rem;
-    margin-bottom: 1rem;
-}
-
-.hero__tekst p {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 1.1rem;
-}
-
-/* klein label boven de titel */
-.hero__rol {
-    display: inline-block;
-    margin-bottom: 1rem;
-    padding: 0.2rem 0.7rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 999px;
-}
-
-/* 6. Inhoud -------------------------------------------------- */
+/* 5. Inhoud --------------------------------------------------------- */
 main {
     padding: 2.5rem 1.5rem;
 }
@@ -262,12 +203,13 @@ main section + section {
 .pagina-intro {
     color: #515b6b;
     font-size: 1.1rem;
-    margin-bottom: 2.5rem;   /* extra ruimte voor de eerste sectie begint */
+    margin-bottom: 2.5rem;
 }
 
 /* kaartenraster: voor vaardigheden, projecten en blogposts */
 .kaarten,
 .posts {
+    list-style: none;
     display: grid;
     gap: 1.5rem;
     margin-top: 1.5rem;
@@ -276,25 +218,10 @@ main section + section {
 .kaart {
     height: 100%;   /* even hoog als de kaart ernaast */
     padding: 1.5rem;
-    background-color: #fff;
-    border: 1px solid #e0e5ee;
-    border-top: 3px solid #1f5fd0;
-    border-radius: 0.75rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    transition: 0.15s;
+    border: 1px solid #ccd3df;
 }
 
-.kaart:hover {
-    transform: translateY(-3px);   /* komt iets omhoog */
-}
-
-.kaart__icoon {
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem;
-}
-
-.kaart__link,
-.post__link {
+.kaart__link {
     display: inline-block;
     margin-top: 0.5rem;
     font-weight: 600;
@@ -302,6 +229,7 @@ main section + section {
 
 /* rijtje met gebruikte technieken */
 .technieken {
+    list-style: none;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
@@ -313,33 +241,21 @@ main section + section {
     font-size: 0.875rem;
     color: #17469b;
     background-color: #f4f6fb;
-    border: 1px solid #e0e5ee;
-    border-radius: 999px;
+    border: 1px solid #ccd3df;
 }
 
 /* korte feiten op de startpagina */
 .feiten {
+    list-style: none;
     display: grid;
     gap: 1rem;
     margin-top: 1.5rem;
 }
 
-.feit {
+.feiten li {
     padding: 1.5rem;
     background-color: #f4f6fb;
-    border: 1px solid #e0e5ee;
-    border-radius: 0.75rem;
-}
-
-.feit dt {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    color: #515b6b;
-}
-
-.feit dd {
-    font-size: 1.05rem;
-    font-weight: 600;
+    border: 1px solid #ccd3df;
 }
 
 /* blokje "waar ik nu mee bezig ben" */
@@ -347,23 +263,13 @@ main section + section {
     margin-top: 1.5rem;
     padding: 1.5rem;
     background-color: #f4f6fb;
-    border: 1px solid #e0e5ee;
-    border-left: 4px solid #1f5fd0;
-    border-radius: 0.75rem;
+    border: 1px solid #ccd3df;
 }
 
 /* blogpost in de lijst */
 .post {
     padding: 1.5rem;
-    background-color: #fff;
-    border: 1px solid #e0e5ee;
-    border-radius: 0.75rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    transition: 0.15s;
-}
-
-.post:hover {
-    transform: translateY(-3px);
+    border: 1px solid #ccd3df;
 }
 
 .post__meta {
@@ -376,9 +282,8 @@ main section + section {
 .cta {
     padding: 2.5rem 1.5rem;
     text-align: center;
-    background: linear-gradient(135deg, #0d1220, #1f2f52);
+    background-color: #0d1220;
     color: #fff;
-    border-radius: 0.75rem;
 }
 
 /* koppen en tekst in het cta-blok gecentreerd houden */
@@ -389,18 +294,18 @@ main section + section {
 }
 
 .cta p {
-    color: rgba(255, 255, 255, 0.8);
+    color: #d7dae0;
 }
 
 .cta .knoppen {
     justify-content: center;
 }
 
-/* 7. Footer ------------------------------------------------ */
+/* 6. Footer --------------------------------------------------------- */
 .site-footer {
     margin-top: 4rem;
     background-color: #0d1220;
-    color: rgba(255, 255, 255, 0.75);
+    color: #d7dae0;
 }
 
 .site-footer__inner {
@@ -422,12 +327,13 @@ main section + section {
 
 .site-footer p {
     font-size: 0.9rem;
+    margin-bottom: 0;
 }
 
-/* 8. Bredere schermen ------------------------------------ */
+/* 7. Bredere schermen ----------------------------------------------- */
 
-/* tablet: vanaf 700px */
-@media (min-width: 700px) {
+/* tablet: vanaf 768px */
+@media (min-width: 768px) {
     h1 {
         font-size: 2.6rem;
     }
@@ -444,11 +350,12 @@ main section + section {
     }
 
     /* hero: tekst links, foto rechts (row-reverse draait de volgorde om) */
-    .hero__inner {
+    .hero {
         flex-direction: row-reverse;
         align-items: center;
         justify-content: space-between;
         gap: 3rem;
+        padding: 3rem;
     }
 
     .hero__foto {
@@ -476,8 +383,8 @@ main section + section {
     }
 }
 
-/* desktop: vanaf 1000px */
-@media (min-width: 1000px) {
+/* desktop: vanaf 1024px */
+@media (min-width: 1024px) {
     .kaarten {
         grid-template-columns: 1fr 1fr 1fr;
     }
@@ -485,12 +392,5 @@ main section + section {
     .hero__foto {
         width: 15rem;
         height: 15rem;
-    }
-}
-
-/* als iemand "minder beweging" instelt, zetten we de overgangen uit */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        transition: none;
     }
 }

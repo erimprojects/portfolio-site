@@ -5,34 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Erim Kocak</title>
     <meta name="description" content="Blog van Erim Kocak over webontwikkeling, toegankelijkheid en wat ik leer tijdens mijn opleiding.">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <a class="skip-link" href="#hoofdinhoud">Direct naar de inhoud</a>
-
     <header class="site-header">
         <div class="site-header__inner">
-            <p class="site-logo"><a href="index.html">Erim Kocak</a></p>
+            <p class="site-logo"><a href="../index.html">Erim Kocak</a></p>
 
             <nav class="site-nav" aria-label="Hoofdnavigatie">
                 <ul>
-                    <li><a href="index.html">Whoami</a></li>
-                    <li><a href="projecten.html">Projecten</a></li>
-                    <li><a href="blog.html" aria-current="page">Blog</a></li>
+                    <li><a href="../index.html">Whoami</a></li>
+                    <li><a href="../projecten/index.html">Projecten</a></li>
+                    <li><a href="index.html" aria-current="page">Blog</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main id="hoofdinhoud">
-        <h1 class="kop-met-streep">Blog</h1>
+    <main>
+        <h1>Blog</h1>
         <p class="pagina-intro">
             Korte stukken over wat ik tegenkom tijdens het bouwen: keuzes die ik maak, fouten die ik
             maak en wat ik daarvan leer.
         </p>
 
-        <section aria-labelledby="posts-titel">
-            <h2 id="posts-titel" class="kop-met-streep">Recente posts</h2>
+        <section>
+            <h2>Recente posts</h2>
 
             <ul class="posts">
                 <li>
@@ -46,7 +44,11 @@
                             HTML en CSS: ik wil eerst zelf snappen hoe de browser mijn markup leest en
                             waarom semantische elementen verschil maken voor een screenreader.
                         </p>
-                        <p><a class="post__link" href="#">Lees verder <span class="sr-only">over bouwen zonder framework</span></a></p>
+                        <p>
+                            Een framework neemt keuzes voor je over die ik juist wil kunnen uitleggen. Nu
+                            weet ik van elke regel in mijn stylesheet waarom hij er staat, en dat is precies
+                            wat ik nodig heb om later een framework bewust te kunnen kiezen.
+                        </p>
                     </article>
                 </li>
 
@@ -58,10 +60,13 @@
                         </p>
                         <p>
                             Ik ontwierp eerst voor desktop en probeerde daarna alles kleiner te maken. Dat
-                            werkte niet. Door bij 360 pixels te beginnen en met media queries lagen toe te
-                            voegen, bleef mijn CSS een stuk overzichtelijker.
+                            werkte niet: ik was vooral bezig met dingen weer uitzetten die ik net had aangezet.
                         </p>
-                        <p><a class="post__link" href="#">Lees verder <span class="sr-only">over mobile first werken</span></a></p>
+                        <p>
+                            Door bij 360 pixels te beginnen en pas daarna met media queries lagen toe te
+                            voegen, bleef mijn CSS overzichtelijk. De basis is nu een kolom, en bij 768 en
+                            1024 pixels komt er telkens een kolom bij.
+                        </p>
                     </article>
                 </li>
 
@@ -76,7 +81,11 @@
                             leesbaar. Sinds ik mijn kleuren toets aan de WCAG AA-norm kies ik bewuster, en
                             het ontwerp wordt er niet lelijker van.
                         </p>
-                        <p><a class="post__link" href="#">Lees verder <span class="sr-only">over contrast en WCAG</span></a></p>
+                        <p>
+                            De norm vraagt minimaal 4,5:1 voor gewone tekst. Mijn grijze bijschriften zitten
+                            nu op ongeveer 6,9:1 en mijn gewone tekst ruim daarboven, dus daar hoef ik bij
+                            het nakijken niet meer over na te denken.
+                        </p>
                     </article>
                 </li>
             </ul>
@@ -88,9 +97,9 @@
             <p>&copy; 2026 Erim Kocak</p>
             <nav class="site-footer__links" aria-label="Footer">
                 <a href="mailto:erimardakocak@gmail.com">E-mail</a>
-                <a href="https://github.com/erimk240">GitHub</a>
-                <a href="index.html">Whoami</a>
-                <a href="projecten.html">Projecten</a>
+                <a href="https://github.com/erimprojects">GitHub</a>
+                <a href="../index.html">Whoami</a>
+                <a href="../projecten/index.html">Projecten</a>
             </nav>
         </div>
     </footer>
